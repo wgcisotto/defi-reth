@@ -6,3 +6,7 @@ tmp
 tmp.ipynb
 tmp.excalidraw
 tmp.txt
+#Intellij idea
+.idea/
+#vscode
+.vscode/
