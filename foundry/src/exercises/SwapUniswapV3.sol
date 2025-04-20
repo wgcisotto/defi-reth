@@ -55,7 +55,16 @@ contract SwapUniswapV3 {
     function swapWethToReth(uint256 wethAmountIn, uint256 rEthAmountOutMin)
         external
     {
-        // Write your code inside here
+        weth.transferFrom(msg.sender, address(this), wethAmountIn);
+        weth.approve(UNISWAP_V3_SWAP_ROUTER_02, wethAmountIn);
+        swap(
+            WETH,
+            RETH,
+            UNISWAP_V3_POOL_FEE_RETH_WETH,
+            wethAmountIn,
+            rEthAmountOutMin,
+            address(this)
+        );
     }
 
     /// @notice Swaps rETH to WETH using Uniswap V3.
@@ -65,6 +74,17 @@ contract SwapUniswapV3 {
     function swapRethToWeth(uint256 rEthAmountIn, uint256 wethAmountOutMin)
         external
     {
-        // Write your code inside here
+        reth.transferFrom(msg.sender, address(this), rEthAmountIn);
+        reth.approve(UNISWAP_V3_SWAP_ROUTER_02, rEthAmountIn);
+        swap(
+            RETH,
+            WETH,
+            UNISWAP_V3_POOL_FEE_RETH_WETH,
+            rEthAmountIn,
+            wethAmountOutMin,
+            address(this)
+        );
+        // Transfer the swapped WETH to the caller
+        //weth.transfer(msg.sender, wethAmountOut);
     }
 }

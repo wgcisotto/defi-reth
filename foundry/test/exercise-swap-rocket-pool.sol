@@ -97,7 +97,11 @@ contract RocketPoolViewTest is RocketPoolTestBase {
     }
 
     function test_getDepositDelay() public view {
-        assertEq(swap.getDepositDelay(), getDepositDelay());
+        bytes32 depositDelayKey = swap.getDepositDelayKey();
+        console.logBytes32(depositDelayKey);
+        uint256 depositDelay = getDepositDelay();
+        console.log("Deposit delay: %e", depositDelay);
+        assertEq(swap.getDepositDelay(), depositDelay);
     }
 
     function test_getLastDepositBlock() public {
