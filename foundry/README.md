@@ -1,4 +1,4 @@
-### How to setup walllet using cast
+### How to setup wallet using cast
 
 ```shell
 # Account setup
