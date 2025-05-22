@@ -186,7 +186,7 @@ contract EigenLayerRestake {
     /// @notice Get the number of shares held in the strategy for the current staker
     /// @return The number of shares held in the EigenLayer strategy
     function getShares() external view returns (uint256) {
-        return strategyManager.stakerStrategyShares(
+        return strategyManager.stakerDepositShares(
             address(this), address(strategy)
         );
     }

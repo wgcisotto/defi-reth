@@ -56,7 +56,7 @@ contract EigenLayerTest is Test {
         assertGt(shares, 0);
         assertEq(
             shares,
-            strategyManager.stakerStrategyShares(
+            strategyManager.stakerDepositShares(
                 address(restake), address(strategy)
             )
         );
