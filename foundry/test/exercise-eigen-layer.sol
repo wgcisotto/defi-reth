@@ -102,12 +102,7 @@ contract EigenLayerTest is Test {
         uint256 protocolDelay = delegationManager.minWithdrawalDelayBlocks();
         console.log("Protocol delay:", protocolDelay);
 
-        address[] memory strategies = new address[](1);
-        strategies[0] = address(strategy);
-        uint256 strategyDelay = delegationManager.getWithdrawalDelay(strategies);
-        console.log("Strategy delay:", strategyDelay);
-
-        vm.roll(b0 + max(protocolDelay, strategyDelay));
+        vm.roll(b0 + protocolDelay + 1);
 
         // Test auth
         vm.expectRevert();

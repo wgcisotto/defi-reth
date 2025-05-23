@@ -120,7 +120,6 @@ contract EigenLayerRestake {
         delegationManager.completeQueuedWithdrawal({
             withdrawal: withdrawal,
             tokens: tokens,
-            middlewareTimesIndex: 0,
             receiveAsTokens: true
         });
     }
