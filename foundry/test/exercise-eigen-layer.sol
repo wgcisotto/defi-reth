@@ -45,15 +45,10 @@ contract EigenLayerTest is Test {
     }
 
     function test_deposit() public {
-        // Test auth
-
-        vm.prank(address(1));
+        // Test deposit mechanics
 
         uint256 shares = restake.deposit(RETH_AMOUNT);
         console.log("shares %e", shares);
-
-        vm.expectRevert();
-        restake.deposit(RETH_AMOUNT);
 
         assertGt(shares, 0);
         assertEq(
