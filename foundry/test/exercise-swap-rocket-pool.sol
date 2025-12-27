@@ -5,14 +5,14 @@ import {Test, console} from "forge-std/Test.sol";
 import {IRETH} from "@src/interfaces/rocket-pool/IRETH.sol";
 import {IRocketStorage} from "@src/interfaces/rocket-pool/IRocketStorage.sol";
 import {IRocketDepositPool} from
-    "@src/interfaces/rocket-pool/IRocketDepositPool.sol";
+"@src/interfaces/rocket-pool/IRocketDepositPool.sol";
 import {IRocketDAOProtocolSettingsDeposit} from
-    "@src/interfaces/rocket-pool/IRocketDAOProtocolSettingsDeposit.sol";
+"@src/interfaces/rocket-pool/IRocketDAOProtocolSettingsDeposit.sol";
 import {
-    RETH,
-    ROCKET_STORAGE,
-    ROCKET_DEPOSIT_POOL,
-    ROCKET_DAO_PROTOCOL_SETTINGS_DEPOSIT
+RETH,
+ROCKET_STORAGE,
+ROCKET_DEPOSIT_POOL,
+ROCKET_DAO_PROTOCOL_SETTINGS_DEPOSIT
 } from "@src/Constants.sol";
 import {SwapRocketPool} from "@src/exercises/SwapRocketPool.sol";
 
@@ -24,9 +24,9 @@ contract RocketPoolTestBase is Test {
     IRETH internal constant reth = IRETH(RETH);
     IRocketStorage internal constant rStorage = IRocketStorage(ROCKET_STORAGE);
     IRocketDepositPool internal constant depositPool =
-        IRocketDepositPool(ROCKET_DEPOSIT_POOL);
+    IRocketDepositPool(ROCKET_DEPOSIT_POOL);
     IRocketDAOProtocolSettingsDeposit internal constant protocolSettings =
-        IRocketDAOProtocolSettingsDeposit(ROCKET_DAO_PROTOCOL_SETTINGS_DEPOSIT);
+    IRocketDAOProtocolSettingsDeposit(ROCKET_DAO_PROTOCOL_SETTINGS_DEPOSIT);
 
     SwapRocketPool internal swap;
 
@@ -35,9 +35,9 @@ contract RocketPoolTestBase is Test {
     }
 
     function getLastDepositBlockKey(address user)
-        public
-        pure
-        returns (bytes32)
+    public
+    pure
+    returns (bytes32)
     {
         return keccak256(abi.encodePacked("user.deposit.block", user));
     }
@@ -97,11 +97,7 @@ contract RocketPoolViewTest is RocketPoolTestBase {
     }
 
     function test_getDepositDelay() public view {
-        bytes32 depositDelayKey = swap.getDepositDelayKey();
-        console.logBytes32(depositDelayKey);
-        uint256 depositDelay = getDepositDelay();
-        console.log("Deposit delay: %e", depositDelay);
-        assertEq(swap.getDepositDelay(), depositDelay);
+        assertEq(swap.getDepositDelay(), getDepositDelay());
     }
 
     function test_getLastDepositBlock() public {

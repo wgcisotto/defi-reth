@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.26;
+pragma solidity ^0.8;
 
 import {IRETH} from "../interfaces/rocket-pool/IRETH.sol";
 import {IERC20} from "../interfaces/IERC20.sol";
 import {ISwapRouter} from "../interfaces/uniswap/ISwapRouter.sol";
 import {
-    RETH,
-    WETH,
-    UNISWAP_V3_SWAP_ROUTER_02,
-    UNISWAP_V3_POOL_FEE_RETH_WETH
-} from "../Constants.sol";
+RETH,
+WETH,
+UNISWAP_V3_SWAP_ROUTER_02,
+UNISWAP_V3_POOL_FEE_RETH_WETH
+} from "@src/Constants.sol";
 
 /// @title SwapUniswapV3
 /// @notice This contract facilitates swaps between rETH and WETH using Uniswap V3.
@@ -17,7 +17,7 @@ import {
 contract SwapUniswapV3 {
     IRETH constant reth = IRETH(RETH);
     IERC20 constant weth = IERC20(WETH);
-    ISwapRouter constant router = ISwapRouter(UNISWAP_V3_SWAP_ROUTER_02);
+    ISwapRouter public constant router = ISwapRouter(UNISWAP_V3_SWAP_ROUTER_02);
 
     /// @notice Executes a token swap using Uniswap V3.
     /// @param tokenIn The address of the token to swap from.
@@ -53,18 +53,9 @@ contract SwapUniswapV3 {
     /// @param rEthAmountOutMin The minimum amount of rETH to receive.
     /// @dev The caller must approve the contract to transfer WETH on their behalf.
     function swapWethToReth(uint256 wethAmountIn, uint256 rEthAmountOutMin)
-        external
+    external
     {
-        weth.transferFrom(msg.sender, address(this), wethAmountIn);
-        weth.approve(address(router), wethAmountIn);
-        swap(
-            WETH,
-            RETH,
-            UNISWAP_V3_POOL_FEE_RETH_WETH,
-            wethAmountIn,
-            rEthAmountOutMin,
-            address(this)
-        );
+        // Write your code inside here
     }
 
     /// @notice Swaps rETH to WETH using Uniswap V3.
@@ -72,17 +63,8 @@ contract SwapUniswapV3 {
     /// @param wethAmountOutMin The minimum amount of WETH to receive.
     /// @dev The caller must approve the contract to transfer rETH on their behalf.
     function swapRethToWeth(uint256 rEthAmountIn, uint256 wethAmountOutMin)
-        external
+    external
     {
-        reth.transferFrom(msg.sender, address(this), rEthAmountIn);
-        reth.approve(address(router), rEthAmountIn);
-        swap(
-            RETH,
-            WETH,
-            UNISWAP_V3_POOL_FEE_RETH_WETH,
-            rEthAmountIn,
-            wethAmountOutMin,
-            address(this)
-        );
+        // Write your code inside here
     }
 }
