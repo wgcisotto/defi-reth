@@ -40,7 +40,6 @@ interface IDelegationManager {
     function completeQueuedWithdrawal(
         Withdrawal calldata withdrawal,
         address[] calldata tokens,
-        uint256 middlewareTimesIndex,
         bool receiveAsTokens
     ) external;
 

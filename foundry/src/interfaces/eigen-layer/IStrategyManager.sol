@@ -2,7 +2,7 @@
 pragma solidity ^0.8;
 
 interface IStrategyManager {
-    function stakerStrategyShares(address user, address strategy)
+    function stakerDepositShares(address user, address strategy)
         external
         view
         returns (uint256 shares);

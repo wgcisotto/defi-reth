@@ -16,7 +16,7 @@ function getLastDepositBlock(address user) public view returns (uint256) {
 
    - Implement logic to get the last deposit block of a given user
 
-   > **Hint:** Look for how this is done inside `RocketTokenRETH._beforeTokenTranser`
+   > **Hint:** Look for how this is done inside `RocketTokenRETH._beforeTokenTransfer`
 
 ## Testing
 

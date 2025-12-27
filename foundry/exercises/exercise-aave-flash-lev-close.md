@@ -23,7 +23,7 @@ This exercise is designed to test your understanding of how to structure a smart
    - Encode flash loan data into `FlashLoanData`.
    - Call `flashLoan` to initiate a flash loan.
 
-   > **Hint:** Look inisde `AaveHelper` to see how to call the function `flashLoan`.
+   > **Hint:** Look inside `AaveHelper` to see how to call the function `flashLoan`.
 
 # `_flashLoanCallback`
 
